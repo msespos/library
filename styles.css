@@ -3,3 +3,16 @@
   font-size: xxx-large;
   color: purple;
 }
+
+#library {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+p {
+  border: 5px solid purple;
+  font-size: large;
+  padding: 10px;
+  width: 50%;
+}
