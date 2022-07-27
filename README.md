@@ -1,0 +1,1 @@
+The library project for the Odin Project's JS course.
