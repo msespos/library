@@ -10,9 +10,17 @@
   align-items: center;
 }
 
-p {
+.book {
   border: 5px solid purple;
   font-size: large;
   padding: 10px;
+  margin: 5px;
   width: 50%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.remove-book-button {
+  width: 25%;
+  font-size: large;
 }

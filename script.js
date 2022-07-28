@@ -18,11 +18,19 @@ function addBookToLibrary(title, author, pages, read) {
 
 let displayLibrary = () => {
   myLibrary.forEach((item) => {
-    const p = document.createElement("p");
+    const div = document.createElement("div");
     const book = document.createTextNode(item.info());
-    p.appendChild(book);
+    div.appendChild(book);
+    const removeBookButton = document.createElement("button");
+    div.classList.add("book");
+    removeBookButton.classList.add("remove-book-button");
+    removeBookButton.textContent = 'REMOVE BOOK'
+    removeBookButton.onclick = () => {
+      library.removeChild(div);
+    }
+    div.appendChild(removeBookButton);
     const library = document.getElementById("library");
-    library.appendChild(p);
+    library.appendChild(div);
   });
 };
 
