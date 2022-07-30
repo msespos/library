@@ -11,25 +11,32 @@ function Book(title, author, pages, read) {
 }
 
 function addBookToLibrary(title, author, pages, read) {
-  myLibrary = [];
   const book = new Book(title, author, pages, read);
   myLibrary.push(book);
 }
 
+let removeBookFromLibrary = (bookIndex) => {
+  myLibrary.splice(bookIndex, 1);
+  displayLibrary();
+}
+
 let displayLibrary = () => {
-  myLibrary.forEach((item) => {
+  const library = document.getElementById("library");
+  while (library.firstChild) {
+    library.removeChild(library.firstChild);
+  }
+  myLibrary.forEach((item, index) => {
     const div = document.createElement("div");
     const book = document.createTextNode(item.info());
     div.appendChild(book);
-    const removeBookButton = document.createElement("button");
     div.classList.add("book");
-    removeBookButton.classList.add("remove-book-button");
-    removeBookButton.textContent = 'REMOVE BOOK'
+    const removeBookButton = document.createElement("button");
+    removeBookButton.classList.add("book-button");
+    removeBookButton.textContent = "REMOVE BOOK";
     removeBookButton.onclick = () => {
-      library.removeChild(div);
-    }
+      removeBookFromLibrary(index);
+    };
     div.appendChild(removeBookButton);
-    const library = document.getElementById("library");
     library.appendChild(div);
   });
 };
@@ -47,9 +54,10 @@ button.onclick = () => {
   }
   addBookToLibrary(title, author, pages, readOrNot);
   displayLibrary();
-}
+};
 
 const targetDiv = document.getElementById("form");
+targetDiv.style.display = "none";
 const buttonTwo = document.getElementById("toggle");
 buttonTwo.onclick = () => {
   if (targetDiv.style.display !== "none") {
