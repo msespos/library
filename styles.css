@@ -1,7 +1,36 @@
 * {
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  font-size: xxx-large;
+  font-size: x-large;
   color: purple;
+  background-color: rgb(145, 145, 212);
+}
+
+.read-or-not {
+  border: 1px solid purple;
+  width: 25%;
+}
+
+.container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.show-hide-and-form {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.library {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 2;
+}
+
+.library-header {
+  display: flex;
+  justify-content: center;
 }
 
 #library {
@@ -15,12 +44,12 @@
   font-size: large;
   padding: 10px;
   margin: 5px;
-  width: 50%;
+  width: 100%;
   display: flex;
   justify-content: space-around;
 }
 
-.remove-book-button {
+.book-button {
   width: 25%;
   font-size: large;
 }
