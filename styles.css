@@ -6,7 +6,7 @@
 
 .read-or-not {
   border: 1px solid purple;
-  width: 25%;
+  width: 50%;
 }
 
 .container {
@@ -41,14 +41,22 @@
 .book {
   border: 5px solid purple;
   font-size: large;
-  padding: 10px 50px;
+  padding: 10px;
   margin: 5px;
-  width: 100%;
+  width: 800px;
   display: flex;
   justify-content: space-between;
+  gap: 10px;
+  flex-shrink: 2;
+}
+
+.book-buttons {
+  display: flex;
+  justify-content: space-between;
+  flex-shrink: 0;
 }
 
 .book-button {
-  width: 25%;
+  max-width: 150px;
   font-size: large;
 }
