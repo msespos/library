@@ -41,8 +41,8 @@ let displayLibrary = () => {
   });
 };
 
-const button = document.querySelector('#button');
-button.onclick = () => {
+const addBookButton = document.querySelector('#button');
+addBookButton.onclick = () => {
   const title = document.getElementById('title').value;
   const author = document.getElementById('author').value;
   const pages = document.getElementById('pages').value;
@@ -58,8 +58,8 @@ button.onclick = () => {
 
 const targetDiv = document.getElementById("form");
 targetDiv.style.display = "none";
-const buttonTwo = document.getElementById("toggle");
-buttonTwo.onclick = () => {
+const formViewToggleButton = document.getElementById("toggle");
+formViewToggleButton.onclick = () => {
   if (targetDiv.style.display !== "none") {
     targetDiv.style.display = "none";
   } else {
