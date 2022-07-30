@@ -6,7 +6,7 @@ function Book(title, author, pages, read) {
   this.pages = pages;
   this.read = read;
   this.info = function() {
-    return title + " by " + author + ", " + pages + " pages, " + read;
+    return this.title + " by " + this.author + ", " + this.pages + " pages, " + this.read;
   }
 }
 
@@ -17,6 +17,15 @@ function addBookToLibrary(title, author, pages, read) {
 
 let removeBookFromLibrary = (bookIndex) => {
   myLibrary.splice(bookIndex, 1);
+  displayLibrary();
+}
+
+let toggleReadStatus = (book) => {
+  if (book.read === "read") {
+    book.read = "not read yet";
+  } else {
+    book.read = "read";
+  }
   displayLibrary();
 }
 
@@ -36,7 +45,18 @@ let displayLibrary = () => {
     removeBookButton.onclick = () => {
       removeBookFromLibrary(index);
     };
-    div.appendChild(removeBookButton);
+    const toggleReadButton = document.createElement("button");
+    toggleReadButton.classList.add("book-button")
+    toggleReadButton.textContent = "TOGGLE STATUS";
+    toggleReadButton.onclick = () => {
+      toggleReadStatus(item);
+    };
+    div.appendChild(toggleReadButton);
+    const buttons = document.createElement("div");
+    buttons.appendChild(removeBookButton);
+    buttons.appendChild(toggleReadButton);
+    buttons.classList.add("book-buttons");
+    div.appendChild(buttons);
     library.appendChild(div);
   });
 };
@@ -56,13 +76,13 @@ addBookButton.onclick = () => {
   displayLibrary();
 };
 
-const targetDiv = document.getElementById("form");
-targetDiv.style.display = "none";
+const form = document.getElementById("form");
+form.style.display = "none";
 const formViewToggleButton = document.getElementById("toggle");
 formViewToggleButton.onclick = () => {
-  if (targetDiv.style.display !== "none") {
-    targetDiv.style.display = "none";
+  if (form.style.display !== "none") {
+    form.style.display = "none";
   } else {
-    targetDiv.style.display = "block";
+    form.style.display = "block";
   }
 };
