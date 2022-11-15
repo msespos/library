@@ -65,17 +65,19 @@ let displayLibrary = () => {
 
 const addBookButton = document.querySelector('#button');
 addBookButton.onclick = () => {
-  const title = document.getElementById('title').value;
-  const author = document.getElementById('author').value;
-  const pages = document.getElementById('pages').value;
-  let readOrNot;
-  if (document.getElementById('read').checked) {
-    readOrNot = 'read';
-  } else {
-    readOrNot = 'not read yet';
+  if (validateTitle() && validateAuthor() && validatePages()) {
+    const title = document.getElementById('title').value;
+    const author = document.getElementById('author').value;
+    const pages = document.getElementById('pages').value;
+    let readOrNot;
+    if (document.getElementById('read').checked) {
+      readOrNot = 'read';
+    } else {
+      readOrNot = 'not read yet';
+    }
+    addBookToLibrary(title, author, pages, readOrNot);
+    displayLibrary();
   }
-  addBookToLibrary(title, author, pages, readOrNot);
-  displayLibrary();
 };
 
 const form = document.getElementById("form");
@@ -86,5 +88,42 @@ formViewToggleButton.onclick = () => {
     form.style.display = "none";
   } else {
     form.style.display = "block";
+  }
+};
+
+const titleField = document.getElementById("title");
+const authorField = document.getElementById("author");
+const pagesField = document.getElementById("pages");
+
+const validateTitle = () => {
+  if (titleField.validity.valueMissing) {
+    titleField.setCustomValidity("Please fill out this field!");
+    titleField.reportValidity();
+    return false;
+  } else {
+    titleField.setCustomValidity("");
+    return true;
+  }
+};
+
+const validateAuthor = () => {
+  if (authorField.validity.valueMissing) {
+    authorField.setCustomValidity("Please fill out this field!");
+    authorField.reportValidity();
+    return false;
+  } else {
+    authorField.setCustomValidity("");
+    return true;
+  }
+};
+
+const validatePages = () => {
+  if (pagesField.validity.valueMissing) {
+    pagesField.setCustomValidity("Please fill out this field!");
+    pagesField.reportValidity();
+    return false;
+  } else {
+    pagesField.setCustomValidity("");
+    return true;
   }
 };
